@@ -78,19 +78,19 @@ Enter your choice:
 
 ### **Implementation Notes:**
 - **Data Structures**:
-   - Use lists, dictionaries, or classes to represent income and expense entries.
-   - Each entry (income or expense) can be a dictionary in Python or a simple class in Java. 
-   - A dictionary could have keys like `description`, `amount`, `category`, `date`, etc.
+   - Use lists or classes to represent income and expense entries.
+   - Each entry (income or expense) can be a simple class in Java. 
+   - A class could have variables like `description`, `amount`, `category`, `date`, etc.
   
 - **Persistence**:
    - For more complexity, store data in a CSV or JSON file (even though this isn't strictly necessary for testing), allowing users to exit and return to the same data.
-   - Use Python's `csv` or `json` module (or Java's `FileWriter`/`BufferedReader`).
+   - Use Java's `FileWriter`/`BufferedReader`.
 
 - **CLI**: 
    - Implement clear, easy-to-use CLI navigation, and validation of input to ensure users provide correct data types (e.g., positive numbers for amounts).
   
 - **No Extra Libraries**:
-   - Stick to built-in libraries (e.g., `datetime` for date handling, `json`/`csv` for file storage, basic lists or dictionaries for data storage).
+   - Stick to built-in libraries.
 
 ---
 
@@ -108,4 +108,4 @@ Enter your choice:
 - **Report Generation**: Creating and managing reports for users to track their progress gives the project a more real-world business application feel.
 - **Persistence**: Data persistence through file handling adds a layer of complexity in managing saving and loading.
 
-This project is a significant step forward from the task management app and will show deeper programming skills in terms of handling different data types, financial calculations, and user-interaction design. It also introduces real-world concepts like budgeting and reporting that are applicable to many software development roles.
+This project will show deeper programming skills in terms of handling different data types, financial calculations, and user-interaction design. It also introduces real-world concepts like budgeting and reporting that are applicable to many software development roles.
