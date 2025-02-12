@@ -31,6 +31,7 @@ public class App {
             String date;
             String category;
             switch (choice) {
+                // Adding Income
                 case "1":
                     System.out.print("Income description: ");
                     description = input.nextLine();
@@ -42,6 +43,7 @@ public class App {
                     Income i = new Income(description, amount, date);
                     b.addIncome(i);
                     break;
+                // Adding Expense
                 case "2":
                     System.out.print("Expense description: ");
                     description = input.nextLine();
@@ -50,11 +52,12 @@ public class App {
                     input.nextLine();
                     System.out.print("Expense date (mm-dd-yy): ");
                     date = input.nextLine();
-                    System.out.println("Category (Food, Entertainment, Rent, Vehicle, Phone, Other)");
+                    System.out.print("Category (Food, Entertainment, Rent, Vehicle, Phone, Other): ");
                     category = input.nextLine();
                     Expense e = new Expense(description, amount, date, parseCategory(category));
                     b.addExpense(e);
                     break;
+                // Viewing Income and Expenses
                 case "3":
                     System.out.println("\nIncome");
                     System.out.println("----------------------------------------------");
@@ -63,26 +66,37 @@ public class App {
                     System.out.println("----------------------------------------------");
                     b.listExpenses();
                     break;
+                // Viewing Budget Summary
                 case "4":
                     b.viewBudgetSummary();
                     break;
+                // Setting Budget for given Category
                 case "5":
-                //TODO
-                    System.out.println("Not yet implemented");
+                    System.out.print("Which category would you like to add a budget to? (Food, Entertainment, Rent, Vehicle, Phone, Other): ");
+                    category = input.nextLine();
+                    System.out.print("Budget amount: ");
+                    amount = input.nextDouble();
+                    input.nextLine();
+                    b.setCategoryBudget(parseCategory(category), amount);
+                    System.out.printf("A budget of $%.2f has been set for %s\n", amount, parseCategory(category).toString());
                     break;
+                // Viewing expenses by Category
                 case "6":
-                    System.out.println("Which category would you like to filter by? (Food, Entertainment, Rent, Vehicle, Phone, Other)");
+                    System.out.print("Which category would you like to filter by? (Food, Entertainment, Rent, Vehicle, Phone, Other): ");
                     category = input.nextLine();
                     b.filterExpensesByCategory(parseCategory(category));
                     break;
+                // Generating Report
                 case "7":
                     //TODO
                     System.out.println("Not yet implemented");
                     break;
+                // Exit
                 case "8":
                     System.out.println("Exiting...");
                     running = false;
                     break;
+                // Invalid value
                 default:
                     System.out.println("Invalid choice\n\n");
                     break;

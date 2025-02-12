@@ -1,5 +1,8 @@
 package models;
 
+/**
+ * Class to represent an Income object. An Income object has a description of the income, the amount of the income, and the date of the income (expected in mm-dd-yy format).
+ */
 public class Income implements Comparable<Income>{
 
     private String description;

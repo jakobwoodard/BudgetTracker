@@ -1,6 +1,9 @@
 package models;
 
-
+/**
+ * Class to represent an Expense object. An Expense object holds a description of the expense, 
+ * the amount of the expense, the date of the expense (expected in mm-dd-yy format), and the category of the expense.
+ */
 public class Expense implements Comparable<Expense> {
 
     private String description;
@@ -86,11 +89,12 @@ public class Expense implements Comparable<Expense> {
         return true;
     }
 
+    /**
+     * Comparision function for an Expense object. Defaultly sorts by date.
+     */
     @Override
     public int compareTo(Expense o) {
-        if (this.getAmount() < o.getAmount()) return -1;
-        else if (this.getAmount() > o.getAmount()) return 1;
-        else return 0;
+        return this.getDate().compareTo(o.getDate());
     }
 
     @Override
