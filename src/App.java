@@ -124,25 +124,4 @@ public class App {
         }
         input.close();
     }
-
-    private static Category parseCategory(String category) {
-        if (category.equalsIgnoreCase("Food")) {
-            return Category.FOOD;
-        }
-        else if (category.equalsIgnoreCase("Entertainment")) {
-            return Category.ENTERTAINMENT;
-        }
-        else if (category.equalsIgnoreCase("Rent")) {
-            return Category.RENT;
-        }
-        else if (category.equalsIgnoreCase("Vehicle")) {
-            return Category.VEHICLE;
-        }
-        else if (category.equalsIgnoreCase("Phone")) {
-            return Category.PHONE;
-        }
-        else {
-            return Category.OTHER;
-        }
-    }
 }
