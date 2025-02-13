@@ -1,4 +1,4 @@
-package models;
+package main.java.models;
 
 /**
  * Class to represent an Expense object. An Expense object holds a description of the expense, 
@@ -15,16 +15,26 @@ public class Expense implements Comparable<Expense> {
         return description;
     }
 
-    private void setDescription(String description) {
-        this.description = description;
+    private void setDescription(String description) throws IllegalArgumentException {
+        if (description.contains(",")) {
+            throw new IllegalArgumentException("Descriptions cannot contain ',' characters!");
+        }
+        else {
+            this.description = description;
+        }
     }
 
     public double getAmount() {
         return amount;
     }
 
-    private void setAmount(double amount) {
-        this.amount = amount;
+    private void setAmount(double amount) throws IllegalArgumentException {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Cannot have an expense of less than 0!");
+        }
+        else {
+            this.amount = amount;
+        }
     }
 
     public String getDate() {
@@ -32,7 +42,12 @@ public class Expense implements Comparable<Expense> {
     }
 
     private void setDate(String date) {
-        this.date = date;
+        if (date.matches("[0-9]{1,2}-[0-9]{1,2}-[0-9]{2}")) {
+            this.date = date;
+        }
+        else {
+            throw new IllegalArgumentException("Invalid date format");
+        }
     }
 
     public Category getCategory() {
@@ -43,7 +58,7 @@ public class Expense implements Comparable<Expense> {
         this.category = category;
     }
 
-    public Expense(String description, double amount, String date, Category category) {
+    public Expense(String description, double amount, String date, Category category) throws IllegalArgumentException {
         setDescription(description);
         setAmount(amount);
         setDate(date);

@@ -1,4 +1,4 @@
-package models;
+package main.java.models;
 
 /**
  * The current categories that an Expense can fit under. Any Category that is not strictly specified should go under "Other"

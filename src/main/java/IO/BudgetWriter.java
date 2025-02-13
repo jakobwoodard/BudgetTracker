@@ -1,14 +1,14 @@
-package IO;
+package main.java.IO;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map.Entry;
 
-import models.Budget;
-import models.Category;
-import models.Expense;
-import models.Income;
+import main.java.models.Budget;
+import main.java.models.Category;
+import main.java.models.Expense;
+import main.java.models.Income;
 
 /**
  * This class is used to write a given budget to a file with specific formatting so that the file can later be retrieved and loaded back into the system.

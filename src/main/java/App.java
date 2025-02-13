@@ -1,12 +1,31 @@
+package main.java;
 import java.util.Scanner;
 
-import IO.BudgetReader;
-import IO.BudgetWriter;
-import models.Budget;
-import models.Category;
-import models.Expense;
-import models.Income;
+import main.java.IO.BudgetReader;
+import main.java.IO.BudgetWriter;
+import main.java.models.Budget;
+import main.java.models.Income;
+import main.java.models.Expense;
 
+
+/**
+ * This program is meant to demonstrate a wide variety of coding concepts and my ability to produce a functioning, robust Java program.
+ * By following the CLI, a user will be prompted to manipulate data pertaining to their "budget". A "budget" in this program is a set of 
+ * income(s) and expense(s) with given descriptors, amounts, dates, and for expenses - categories. A user is able to set spending limits for 
+ * specific categories BUT, similar to real-life, there is no preventing the user from overspending on their budget. Instead, they are sent an "alert"
+ * that they have overspent. 
+ * 
+ * At any time during the program, the user can see what his or her past incomes and expenses are. They can see this either through listing the entirety
+ * of their budget, through a summary of just total dollar amounts, or by viewing their expenses by a specific category.
+ * 
+ * A user can also generate reports about their budget. These reports include a full expense report, sorted by time; a report on a single or multiple spending
+ * categories; a report about expenses over a specific time frame; or a report combining a single or multiple spending categories within a single time frame.
+ * These reports will be generated in a csv format to a file specified by the user.
+ * 
+ * The user can also save the entirety of their budget to a specified file at any point. This is meant to allow the user to save their budget and return back
+ * later to add on/generate reports. The user can return to editing their budget by reading in a budget file. A budget file has a specific format and keeps 
+ * track of all income, expenses, and any budgets for individual categories that may have been added by the user.
+ */
 public class App {
     public static void main(String[] args) throws Exception {
         boolean running = true;
@@ -44,8 +63,15 @@ public class App {
                     input.nextLine();
                     System.out.print("Income date (mm-dd-yy): ");
                     date = input.nextLine();
-                    Income i = new Income(description, amount, date);
-                    b.addIncome(i);
+                    try {
+                        Income i = new Income(description, amount, date);
+                        b.addIncome(i);
+                    }
+                    catch (IllegalArgumentException e) {
+                        System.out.println("Error adding income.");
+                        System.out.println(e.getMessage());
+                    }
+                    
                     break;
                 // Adding Expense
                 case "2":
@@ -58,7 +84,7 @@ public class App {
                     date = input.nextLine();
                     System.out.print("Category (Food, Entertainment, Rent, Vehicle, Phone, Other): ");
                     category = input.nextLine();
-                    Expense e = new Expense(description, amount, date, parseCategory(category));
+                    Expense e = new Expense(description, amount, date, BudgetReader.parseCategory(category));
                     b.addExpense(e);
                     break;
                 // Viewing Income and Expenses
@@ -82,13 +108,13 @@ public class App {
                     amount = input.nextDouble();
                     input.nextLine();
                     b.setCategoryBudget(BudgetReader.parseCategory(category), amount);
-                    System.out.printf("A budget of $%.2f has been set for %s\n", amount, parseCategory(category).toString());
+                    System.out.printf("A budget of $%.2f has been set for %s\n", amount, BudgetReader.parseCategory(category).toString());
                     break;
                 // Viewing expenses by Category
                 case "6":
                     System.out.print("Which category would you like to filter by? (Food, Entertainment, Rent, Vehicle, Phone, Other): ");
                     category = input.nextLine();
-                    b.filterExpensesByCategory(parseCategory(category));
+                    b.filterExpensesByCategory(BudgetReader.parseCategory(category));
                     break;
                 // Generating Report
                 case "7":

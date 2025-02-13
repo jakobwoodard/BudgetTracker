@@ -1,17 +1,18 @@
-package IO;
+package main.java.IO;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
+
+import main.java.models.Budget;
+import main.java.models.Category;
+import main.java.models.Expense;
+import main.java.models.Income;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-
-import models.Budget;
-import models.Category;
-import models.Expense;
-import models.Income;
 
 /**
  * Class that contains methods to read a budget from a file. 
