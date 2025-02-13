@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import IO.BudgetReader;
+import IO.BudgetWriter;
 import models.Budget;
 import models.Category;
 import models.Expense;
@@ -21,7 +23,9 @@ public class App {
             System.out.println("5. Set Category Budget");
             System.out.println("6. View Expenses by Category");
             System.out.println("7. Generate Report");
-            System.out.println("8. Exit");
+            System.out.println("8. Save to File");
+            System.out.println("9. Load from File");
+            System.out.println("10. Exit");
             System.out.print('\n' + "Enter your choice: ");
 
             String choice = input.nextLine();
@@ -77,7 +81,7 @@ public class App {
                     System.out.print("Budget amount: ");
                     amount = input.nextDouble();
                     input.nextLine();
-                    b.setCategoryBudget(parseCategory(category), amount);
+                    b.setCategoryBudget(BudgetReader.parseCategory(category), amount);
                     System.out.printf("A budget of $%.2f has been set for %s\n", amount, parseCategory(category).toString());
                     break;
                 // Viewing expenses by Category
@@ -91,8 +95,24 @@ public class App {
                     //TODO
                     System.out.println("Not yet implemented");
                     break;
-                // Exit
+                // Save to file
                 case "8":
+                    System.out.print("Enter the file name to save to: ");
+                    String filename = input.nextLine();
+                    BudgetWriter.saveBudget(b, filename);
+                    break;
+                // Load from file
+                case "9":
+                    System.out.print("WARNING: This action will overwrite the current budget. It is advised you save the current budget before continuting.\nDo you wish to continue? (y/n) ");
+                    String option = input.nextLine();
+                    if (option.equalsIgnoreCase("y")) {
+                        System.out.print("Enter the file name to read from: ");
+                        filename = input.nextLine();
+                        b = BudgetReader.readBudget(filename);
+                    }
+                    break;
+                // Exit
+                case "10":
                     System.out.println("Exiting...");
                     running = false;
                     break;

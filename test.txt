@@ -1,0 +1,4 @@
++ tutoring, 60.00, 02-15-25
+- dinner, 30.00, 02-05-25, FOOD
+- gambling, 5.00, 02-12-25, ENTERTAINMENT
+* ENTERTAINMENT, 40.00
